@@ -1,0 +1,155 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+# This is the new content for 'graph/schema.graphqls'
+enum GenderEnum {
+  MALE
+  FEMALE
+  NON_BINARY
+  OTHER
+  PREFER_NOT_TO_SAY
+}
+
+enum ChidGenderEnum {
+  GIRL
+  BOY
+  OTHER
+}
+
+enum childActivity_levelEnum {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum reactionTypeEnum {
+  like
+  dislike
+}
+
+enum connectionTypeEnum {
+  accept
+  reject
+}
+
+
+
+type User {
+  userID: ID!
+  email: String!
+  created_at: Time!
+  profilePicture: String
+
+  profile: Profile!
+
+  bio: Bio!
+}
+ 
+type Profile {
+  userID: ID!
+  name: String
+  about: String
+  languages: [String]
+	addressCity: String
+  lat: Float
+  lon: Float
+	childName: String
+	childAbout:  String
+	childInterests: [String]
+  
+  user: User!
+}
+
+type Bio {
+  userID: ID!
+	parentGender: GenderEnum!
+	preferredDistance: Int
+	childBirthday: String
+	childGender: ChidGenderEnum!
+	childActivity_level: childActivity_levelEnum!
+	limitations: [String]
+	allergies: [String]
+	play_styles: [String]
+
+  user: User!
+}
+
+type LoginResponse {
+  token: String!
+  user: User!
+}
+
+type Connection {
+  connectionID: ID!
+  conType: connectionTypeEnum!
+}
+
+type Chat {
+  id: ID!
+  participants: [User!]!
+  messages: [Message!]!
+}
+
+type Message {
+  id: ID!
+  content: String!
+  createdAt: String!
+  sender: User!
+}
+
+
+
+type Query {
+  user(userID: ID!): User
+  profile(userID: ID!): Profile
+  bio(userID: ID!): Bio
+  me: User
+  myBio: Bio
+  myProfile: Profile
+  recommendations(limit: Int = 10, offset: Int = 0): [User!]!
+  connectReguests(limit: Int = 20, offset: Int = 0): [User!]!
+  connections(limit: Int = 20, offset: Int = 0): [User!]!
+}
+
+type Mutation {
+  registerUser(email: String!, password: String!): User!
+  loginUser(email: String!, password: String!): LoginResponse!
+  deletePhoto: Boolean!
+  upsertReaction(targetedUserID: ID!, reaction: reactionTypeEnum!): Boolean!
+  upsertConnection(connectionID: ID!, conType: connectionTypeEnum!): Boolean!
+  disconnectUsers(targetedUserID: ID!): Boolean!
+
+  sendMessage(chatID: ID!, content: String!): Message!
+  
+
+  updateProfile (
+  name: String
+  about: String
+  languages: [String]
+	addressCity: String
+  lat: Float
+  lon: Float
+	childName: String
+	childAbout:  String
+	childInterests: [String]
+  ):Profile
+
+  updateBio (
+	parentGender: GenderEnum
+	preferredDistance: Int
+	childBirthday: String
+	childGender: ChidGenderEnum
+	childActivity_level: String
+	limitations: [String]
+	allergies: [String]
+	play_styles: [String]
+  ):Bio
+}
+
+type Subscription {
+  onNewMessage(chatID: ID!): Message!
+}
+
+# This scalar is provided by gqlgen
+scalar Time

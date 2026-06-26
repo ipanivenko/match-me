@@ -1,0 +1,42 @@
+.bottom-panel {
+    
+    max-width: 650px;
+     margin: 0 auto; 
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-around;
+    padding: 0.5rem clamp(0.5rem, 3vw, 1rem);
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+    background: #363636;
+    border-top: 1px solid #eaeaea;
+    z-index: 30;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, .06);
+    border-radius: 7px; 
+}
+
+.bottom-panel .button {
+    flex: 1 1 0;
+    white-space: nowrap;
+}
+
+/* keep your existing .bottom-panel rules, then add: */
+.bottom-panel .icon-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    /* no text padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom-panel .icon-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    /* match Bulma button color */
+}

@@ -1,0 +1,78 @@
+.user-profile, .child-profile, .columns {
+  max-width: 650px;      /* Limit width */
+  margin: 0 auto;        /* Center horizontally */
+  padding: 2rem;         /* Space inside */
+  background: white;      /* White background */
+  border-radius: 12px;   /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: relative;
+}
+
+/* Space between fields */
+.user-profile .field, .child-profile .field {
+  margin-bottom: 1.25rem;
+}
+
+/* Make labels smaller & neat */
+.user-profile .label, .child-profile .label{
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Reduce input size */
+.user-profile .input,
+.user-profile .textarea,
+.user-profile .select select,
+.child-profile .input,
+.child-profile .textarea,
+.child-profile .select select {
+  height: 2.7em;
+  font-size: 0.9rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+}
+
+/* Submit button styling */
+.user-profile .button.is-primary, .child-profile .button.is-primary  {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.select select {
+  height: 2.7em;       /* adjust height */
+  padding-left: 0.75em;
+  padding-right: 2em;  /* space for arrow */
+  width: 180px;
+}
+
+.rate {
+  width: 70px;
+}
+
+.with-bottom-panel {
+  padding-bottom: 64px; /* ~height of the panel */
+  
+}
+
+.button.logout {
+  position: fixed; top: 10px; right: 330px; 
+
+}
+
+.with-bottom-panel {
+  padding-bottom: 64px; /* matches bottom panel height */
+} 
+
+.field.lang{
+  width: 200px;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.button.con {
+  width: 100px;
+}

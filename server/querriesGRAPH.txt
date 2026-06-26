@@ -1,0 +1,174 @@
+query GetProfile($userID: ID!) {
+  profile(userID: $userID) {
+  userID,
+  name,
+  about,
+  childName,
+  ChildInterests,
+    lat
+  }
+}
+
+VAR {"userID": "9b6a2aa5-5ea8-4ada-a850-37e849ce498c"}
+Header {
+  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjIyNTg0OTAsImlhdCI6MTc2MjE3MjA5MCwic3ViIjoiMDM1OGJkN2UtZjhiMS00MmFkLWE0ZWEtNmQ1NDhmMWE0MDcyIn0.QCtqdvxMMd3BxsV180x1ZWxj9ZSPymgXXbduuqZBiFA"
+}
+
+loginUser
+mutation{
+  loginUser(email:"graph1@gmail.com", password:"12345a"){
+    token
+    user{
+      userID
+    }
+  }
+}
+
+
+query GetUser($userID: ID!) {
+  user(id: $userID) {
+  userID,
+  email,
+  profilePicture
+    profile{
+      name,
+      languages,
+      childName,
+      addressCity,
+      ChildInterests
+    }
+    bio{
+      childBirthday,
+      play_styles
+    }
+  }
+}
+
+
+
+query GetBio($userID: ID!) {
+  bio(userID: $userID) {
+  userID,
+  parentGender,
+  limitations,
+  preferredDistance,
+    user{
+      email
+    }
+  }
+}
+
+query GetMeProfile {
+  myProfile{
+  userID,
+  name,
+  about,
+  childName,
+  childInterests,
+    lat
+  }
+}
+
+
+mutation UpdateBio {
+  updateBio(
+    parentGender: "FEMALE"
+    preferredDistance: 15
+    childBirthday: "2020-09-17"
+    childActivity_level: "HIGH"
+    limitations: ["None"]
+    allergies: ["Peanuts"]
+    play_styles: ["Outdoor", "Creative"]
+  ) {
+    parentGender
+    preferredDistance
+    childBirthday
+    childGender
+    childActivity_level
+    limitations
+    allergies
+    play_styles
+  }
+}
+
+
+mutation UpdateProfile {
+  updateProfile(
+    name: "Irina"
+    childInterests: ["reading", "writing"]
+  ) {
+    userID
+    name
+    about
+    languages
+    addressCity
+    lat
+    lon
+    childName
+    childAbout
+    childInterests
+  }
+}
+
+
+query GetRec{
+  recommendations {
+    userID
+    bio{
+      limitations
+      childGender
+    }
+    profile{
+      name
+      childAbout
+    }
+  }
+}
+
+mutation DeletePhoto{
+  deletePhoto
+}
+
+mutation UpsertReaction{
+  upsertReaction(targetedUserID: "9b6a2aa5-5ea8-4ada-a850-37e849ce498c", reaction: like)
+}
+
+query GetCon{
+  connections {
+    userID
+    bio{
+      preferredDistance
+      childBirthday
+      childGender
+    }
+    profile{
+      name
+      childAbout
+      childInterests
+    }
+  }
+}
+
+FOR SUBSCRIPTIONS
+
+subscription {
+  onNewMessage(chatID: "5493a4e8-7ebe-49b7-b8c9-b3108bf2a542") {
+    id
+    content
+    sender { userID, email }
+  }
+}
+HTTP header !IMPORTANT
+{
+  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjMxMTk0MDYsImlhdCI6MTc2MzAzMzAwNiwic3ViIjoiNDdlYWIxNmYtNjliMi00ZmM1LTgyMjctMDBiYmM3MDRjMGJmIn0.iJ0j-AKPipzbNtIITySt3LQhitFSuXApbSd8wItd14c"
+}
+
+mutation send {
+  sendMessage(chatID: "5493a4e8-7ebe-49b7-b8c9-b3108bf2a542", content: "Hello, this is a test!") {
+    id
+    content
+    sender{
+      email
+    }
+  }
+}

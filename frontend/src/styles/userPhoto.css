@@ -1,0 +1,44 @@
+.photo-slot {
+  position: relative;
+  width: 180px;            /* tweak as you like */
+  aspect-ratio: 1 / 1;
+  border: 1px dashed #d7d7d7;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #fafafa;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease;
+}
+
+.photo-slot.is-empty:hover { background: #f3f3f3; }
+
+.placeholder-emoji {
+  font-size: clamp(36px, 8vw, 64px);
+  line-height: 1;
+  opacity: 0.8;
+  user-select: none;
+}
+
+.photo-slot img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.photo-slot .remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  border: none;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+}

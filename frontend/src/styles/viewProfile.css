@@ -1,0 +1,116 @@
+
+.user-profile, .container-err{
+  max-width: 650px;  
+  margin: 0 auto;        /* Center horizontally */
+  padding: 2rem;         /* Space inside */
+  background: #fff;      /* White background */
+  border-radius: 12px;   /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: relative;
+  margin-top: 20px;
+}
+
+
+.logout {
+  position: absolute; top: 24px; right: 330px; 
+
+}
+
+.button.connect {
+   position: fixed; top: 10px; left: 310px; 
+
+}
+
+
+.avatar-wrapper {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-wrapper img {
+  width: 128px;
+  height: 128px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.avatar-fallback {
+  font-size: 3rem;
+  opacity: 0.6;
+}
+
+
+
+.parent-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.parent-city {
+  color: #7a7a7a;
+  margin-bottom: 0.5rem;
+}
+
+.parent-about {
+  margin-bottom: 1rem;
+}
+
+
+.child-block {
+  margin-top: 2rem;
+}
+
+.child-name {
+  font-weight: 600;
+}
+
+.child-about {
+  margin-top: 0.5rem;
+}
+
+.top-interests .tag {
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+
+
+.error-text {
+  font-weight: 500;
+}
+
+.loading-text {
+  font-style: italic;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .recommendations-container {
+    padding: 1rem;
+  }
+  
+  .buttons {
+    flex-wrap: wrap;
+
+  }
+  
+  .buttons button {
+    flex: 1 1 45%;
+    min-width: 120px;
+  }
+  
+  .avatar-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .column {
+    padding: 0.5rem !important;
+  }
+}

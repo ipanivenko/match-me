@@ -1,0 +1,17 @@
+/* Make Bulma dropdown stretch the input width */
+.dropdown,
+.dropdown-trigger,
+.dropdown-menu {
+  width: 100%;
+}
+
+/* Scroll if many suggestions */
+.city-dropdown {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+/* Improve clickability on items */
+.dropdown-item {
+  cursor: pointer;
+}

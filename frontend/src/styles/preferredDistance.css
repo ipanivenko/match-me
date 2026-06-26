@@ -1,0 +1,56 @@
+/* ---------- Base (layered backgrounds) ---------- */
+.slider {
+  --thumb: 28px;         
+  --pct: 0%;             
+  width: 100%;
+  appearance: none;
+  height: 14px;
+  border-radius: 999px;
+ 
+  background:
+    linear-gradient(#3273dc, #3273dc) no-repeat,
+    linear-gradient(#dbdbdb, #dbdbdb) no-repeat;
+  background-size: var(--pct) 100%, 100% 100%;
+  background-color: transparent;
+  outline: none;
+}
+
+/* ---------- Chrome/Safari (WebKit) ---------- */
+.slider::-webkit-slider-runnable-track {
+  height: 14px;                
+  border-radius: 999px;
+  background: transparent;      
+}
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: var(--thumb);
+  height: var(--thumb);
+  margin-top: calc((14px - var(--thumb)) / 2); /* center the thumb */
+  border-radius: 50%;
+  background: #3273dc;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #3273dc;
+  cursor: pointer;
+}
+
+/* ---------- Firefox ---------- */
+/* Let Firefox render its native filled track; no layered bg needed */
+.slider::-moz-range-track {
+  height: 14px;
+  border-radius: 999px;
+  background: #dbdbdb;
+}
+.slider::-moz-range-progress {
+  height: 14px;
+  border-radius: 999px;
+  background: #3273dc;
+}
+.slider::-moz-range-thumb {
+  width: var(--thumb);
+  height: var(--thumb);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #3273dc;
+  box-shadow: 0 0 0 2px #3273dc;
+  cursor: pointer;
+}
