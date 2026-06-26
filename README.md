@@ -110,7 +110,6 @@ Ensure you have the following installed on your system:
 #### 1. **Clone the Repository**
 
     ```bash
-    git clone https://gitea.kood.tech/irinapanivenko/match-me.git
     cd match-me
     ```
 
